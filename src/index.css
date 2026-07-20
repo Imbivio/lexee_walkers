@@ -1,0 +1,406 @@
+/* =========================================================================
+   Lexee — design tokens & global styles
+   Palette: trail-green brand on a green-biased warm near-white,
+   one warm amber-gold accent reserved for the Leaves currency.
+   Type: Fraunces (display, used with restraint) + Hanken Grotesk (UI).
+   ========================================================================= */
+
+:root {
+  /* --- neutrals (green-biased, deliberately not pure grey) --- */
+  --paper: #f1f4ef;
+  --surface: #ffffff;
+  --surface-2: #f7f9f5;
+  --line: #e2e8dd;
+  --ink: #16221b;
+  --ink-soft: #566a5d;
+  --ink-faint: #8a9a8f;
+
+  /* --- brand --- */
+  --brand: #1e6e45;
+  --brand-deep: #124a2e;
+  --brand-tint: #e6f0e9;
+  --on-brand: #f3f8f4;
+
+  /* --- accent: the Leaves currency (value / reward) --- */
+  --accent: #c8891a;
+  --accent-strong: #a86e0f;
+  --accent-tint: #f8eed6;
+
+  /* --- semantic (kept separate from the accent hue) --- */
+  --good: #2e7d46;
+  --warn: #b9791a;
+  --bad: #bd4530;
+
+  /* --- shape & depth --- */
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 26px;
+  --r-pill: 999px;
+  --shadow-1: 0 1px 2px rgba(20, 40, 28, 0.04), 0 4px 16px rgba(20, 40, 28, 0.05);
+  --shadow-2: 0 2px 6px rgba(20, 40, 28, 0.06), 0 14px 40px rgba(20, 40, 28, 0.10);
+  --shadow-brand: 0 10px 30px rgba(18, 74, 46, 0.28);
+
+  /* --- type --- */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-ui: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+
+  --shell-max: 440px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0d1611;
+    --surface: #15201a;
+    --surface-2: #1a271f;
+    --line: #26362c;
+    --ink: #e9f0ea;
+    --ink-soft: #9db0a3;
+    --ink-faint: #6e8175;
+
+    --brand: #43a06d;
+    --brand-deep: #2b7a4e;
+    --brand-tint: #17281e;
+    --on-brand: #f3f8f4;
+
+    --accent: #e2ac45;
+    --accent-strong: #f0bd5c;
+    --accent-tint: #2a2213;
+
+    --good: #4caf6c;
+    --warn: #d9a13f;
+    --bad: #e0664e;
+
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.35);
+    --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.35), 0 14px 40px rgba(0, 0, 0, 0.5);
+    --shadow-brand: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* explicit theme toggle wins over the OS media query, in both directions */
+:root[data-theme="light"] {
+  --paper: #f1f4ef;
+  --surface: #ffffff;
+  --surface-2: #f7f9f5;
+  --line: #e2e8dd;
+  --ink: #16221b;
+  --ink-soft: #566a5d;
+  --ink-faint: #8a9a8f;
+  --brand: #1e6e45;
+  --brand-deep: #124a2e;
+  --brand-tint: #e6f0e9;
+  --accent: #c8891a;
+  --accent-strong: #a86e0f;
+  --accent-tint: #f8eed6;
+  --good: #2e7d46;
+  --warn: #b9791a;
+  --bad: #bd4530;
+  --shadow-1: 0 1px 2px rgba(20, 40, 28, 0.04), 0 4px 16px rgba(20, 40, 28, 0.05);
+  --shadow-2: 0 2px 6px rgba(20, 40, 28, 0.06), 0 14px 40px rgba(20, 40, 28, 0.10);
+  --shadow-brand: 0 10px 30px rgba(18, 74, 46, 0.28);
+}
+
+:root[data-theme="dark"] {
+  --paper: #0d1611;
+  --surface: #15201a;
+  --surface-2: #1a271f;
+  --line: #26362c;
+  --ink: #e9f0ea;
+  --ink-soft: #9db0a3;
+  --ink-faint: #6e8175;
+  --brand: #43a06d;
+  --brand-deep: #2b7a4e;
+  --brand-tint: #17281e;
+  --accent: #e2ac45;
+  --accent-strong: #f0bd5c;
+  --accent-tint: #2a2213;
+  --good: #4caf6c;
+  --warn: #d9a13f;
+  --bad: #e0664e;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.35), 0 14px 40px rgba(0, 0, 0, 0.5);
+  --shadow-brand: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* =========================================================================
+   App shell — a centered phone frame on desktop, full-bleed on mobile
+   ========================================================================= */
+
+.stage {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  background:
+    radial-gradient(120% 60% at 50% -10%, var(--brand-tint), transparent 60%),
+    var(--paper);
+}
+
+.shell {
+  position: relative;
+  width: 100%;
+  max-width: var(--shell-max);
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@media (min-width: 480px) {
+  .stage {
+    padding: 28px 0;
+    align-items: flex-start;
+  }
+  .shell {
+    min-height: min(880px, calc(100vh - 56px));
+    border-radius: 40px;
+    box-shadow: var(--shadow-2);
+    border: 1px solid var(--line);
+  }
+}
+
+.screen {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 20px calc(112px + env(safe-area-inset-bottom));
+  -webkit-overflow-scrolling: touch;
+}
+
+.screen::-webkit-scrollbar {
+  width: 0;
+}
+
+/* view transition */
+.view-enter {
+  animation: viewIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes viewIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================================
+   Shared typographic + layout primitives
+   ========================================================================= */
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.section-title {
+  font-family: var(--font-ui);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-1);
+}
+
+/* =========================================================================
+   App header
+   ========================================================================= */
+
+.appbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(18px + env(safe-area-inset-top)) 20px 12px;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 25px;
+  letter-spacing: -0.03em;
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.wordmark .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-bottom: 12px;
+}
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.icon-btn:active {
+  transform: scale(0.92);
+}
+
+/* =========================================================================
+   Leaves currency chip
+   ========================================================================= */
+
+.leaves-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px 6px 9px;
+  border-radius: var(--r-pill);
+  background: var(--accent-tint);
+  color: var(--accent-strong);
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+}
+.leaves-chip svg {
+  color: var(--accent);
+}
+
+/* =========================================================================
+   Buttons
+   ========================================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  height: 54px;
+  padding: 0 24px;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  transition: transform 0.14s ease, box-shadow 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn-primary {
+  background: var(--brand);
+  color: var(--on-brand);
+  box-shadow: var(--shadow-brand);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.btn-ghost {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.btn-block {
+  width: 100%;
+}
+.btn-danger {
+  background: color-mix(in srgb, var(--bad) 14%, var(--surface));
+  color: var(--bad);
+  border: 1px solid color-mix(in srgb, var(--bad) 30%, transparent);
+}
