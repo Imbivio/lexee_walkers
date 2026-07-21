@@ -1,15 +1,13 @@
-import { DAILY_GOAL } from "../store/AppState";
-
 const DAYS = ["M", "T", "W", "T", "F", "S", "S"];
 
-export function WeekChart({ week }: { week: number[] }) {
-  const max = Math.max(DAILY_GOAL, ...week);
+export function WeekChart({ week, goal }: { week: number[]; goal: number }) {
+  const max = Math.max(goal, ...week);
   return (
     <div className="week">
       {week.map((v, i) => {
         const h = Math.max(6, Math.round((v / max) * 100));
         const isToday = i === week.length - 1;
-        const hitGoal = v >= DAILY_GOAL;
+        const hitGoal = v >= goal;
         return (
           <div className="week-col" key={i}>
             <div className="week-track">

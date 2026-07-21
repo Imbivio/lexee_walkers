@@ -47,6 +47,22 @@
   --shell-max: 440px;
 }
 
+/* Map + badge-tier tokens are derived from the theme tokens above, so they
+   adapt automatically to light/dark without needing to be redefined. */
+:root {
+  --map-land: color-mix(in srgb, var(--brand) 9%, var(--surface));
+  --map-park: color-mix(in srgb, var(--brand) 24%, var(--surface));
+  --map-water: color-mix(in srgb, #58a7c6 42%, var(--surface));
+  --map-road: var(--surface);
+  --map-road-mid: color-mix(in srgb, var(--line) 65%, transparent);
+  --map-ring: color-mix(in srgb, var(--ink) 22%, transparent);
+
+  --tier-start: var(--brand);
+  --tier-bronze: #b57a2b;
+  --tier-silver: #8fa0ab;
+  --tier-gold: #d9a227;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --paper: #0d1611;

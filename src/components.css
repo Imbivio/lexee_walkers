@@ -898,3 +898,492 @@
   color: var(--ink-faint);
   font-weight: 500;
 }
+
+/* =========================================================================
+   Splash
+   ========================================================================= */
+.splash {
+  display: grid;
+  place-items: center;
+}
+.splash-mark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 34px;
+  letter-spacing: -0.03em;
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: breathe 1.6s ease-in-out infinite;
+}
+.splash-mark .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-bottom: 15px;
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* =========================================================================
+   Auth
+   ========================================================================= */
+.auth-shell {
+  overflow: hidden;
+}
+.auth-art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.auth-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(46px);
+  opacity: 0.55;
+}
+.auth-blob.b1 {
+  width: 320px;
+  height: 320px;
+  top: -120px;
+  right: -110px;
+  background: var(--brand);
+}
+.auth-blob.b2 {
+  width: 260px;
+  height: 260px;
+  top: 90px;
+  left: -120px;
+  background: var(--accent);
+  opacity: 0.28;
+}
+.auth-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.35;
+  mask-image: radial-gradient(120% 80% at 50% 0%, #000, transparent 70%);
+  -webkit-mask-image: radial-gradient(120% 80% at 50% 0%, #000, transparent 70%);
+}
+.auth-body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: calc(40px + env(safe-area-inset-top)) 26px calc(28px + env(safe-area-inset-bottom));
+}
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.auth-wordmark {
+  font-size: 30px;
+}
+.auth-wordmark .dot {
+  margin-bottom: 15px;
+}
+.auth-tag {
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.auth-welcome {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.auth-head {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.auth-head.sm {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+.auth-sub {
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 40ch;
+}
+.auth-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-top: 8px;
+}
+.auth-demo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 2px;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.auth-form {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.auth-back {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+.flip {
+  transform: rotate(180deg);
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.field-lbl {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.01em;
+}
+.input {
+  height: 52px;
+  padding: 0 16px;
+  border-radius: var(--r-md);
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+.input::placeholder {
+  color: var(--ink-faint);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-tint);
+}
+.input-sm {
+  height: 40px;
+  font-size: 15px;
+  width: 148px;
+}
+.auth-error {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--bad);
+  background: color-mix(in srgb, var(--bad) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--bad) 26%, transparent);
+  padding: 11px 14px;
+  border-radius: var(--r-sm);
+}
+.auth-switch {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 4px;
+}
+.auth-link {
+  font-weight: 700;
+  color: var(--brand);
+}
+.auth-fineprint {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+/* =========================================================================
+   Explore map
+   ========================================================================= */
+.seg-wide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  padding: 4px;
+}
+.seg-wide .seg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px;
+  font-size: 14.5px;
+}
+.map-canvas {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-1);
+  background: var(--map-land);
+}
+.map-svg {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+.map-pin {
+  cursor: pointer;
+}
+.map-pin-dot {
+  transition: r 0.18s cubic-bezier(0.22, 1.4, 0.4, 1);
+}
+.map-pin.active {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
+}
+.you-halo {
+  fill: var(--brand);
+  opacity: 0.18;
+  transform-origin: center;
+  animation: youPulse 2.4s ease-in-out infinite;
+}
+@keyframes youPulse {
+  0%, 100% { transform: scale(0.7); opacity: 0.28; }
+  50% { transform: scale(1.15); opacity: 0.08; }
+}
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding: 13px 15px;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+.map-key,
+.map-you-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.map-swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.you-swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-tint);
+}
+.map-pick {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  animation: viewIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* =========================================================================
+   Badges (real, with progress)
+   ========================================================================= */
+.badge-count {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+}
+.badge {
+  gap: 5px;
+  position: relative;
+}
+.badge-ic.tier-start { background: var(--brand-tint); color: var(--brand); }
+.badge-ic.tier-bronze { background: color-mix(in srgb, var(--tier-bronze) 16%, var(--surface)); color: var(--tier-bronze); }
+.badge-ic.tier-silver { background: color-mix(in srgb, var(--tier-silver) 20%, var(--surface)); color: var(--tier-silver); }
+.badge-ic.tier-gold { background: color-mix(in srgb, var(--tier-gold) 18%, var(--surface)); color: var(--tier-gold); }
+.badge.locked .badge-ic {
+  background: var(--surface-2);
+  color: var(--ink-faint);
+}
+.badge.locked .badge-name,
+.badge.locked .badge-note {
+  opacity: 0.85;
+}
+.badge-earned {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--good);
+}
+.badge-prog {
+  margin-top: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.badge-prog-track {
+  height: 6px;
+  border-radius: 6px;
+  background: var(--surface-2);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.badge-prog-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-deep));
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.badge-prog-lbl {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+
+/* =========================================================================
+   Settings controls
+   ========================================================================= */
+.set-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.mini-save {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--brand);
+  color: var(--on-brand);
+}
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 3px;
+}
+.stepper button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+.stepper-val {
+  min-width: 58px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14.5px;
+}
+.logout-btn {
+  margin-top: 22px;
+}
+
+/* =========================================================================
+   Badge unlock celebration
+   ========================================================================= */
+.unlock-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(10, 20, 14, 0.55);
+  backdrop-filter: blur(4px);
+  animation: fade 0.2s ease both;
+}
+.unlock {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  padding: 30px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  overflow: hidden;
+  animation: sheetUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.unlock-rays {
+  position: absolute;
+  top: -40px;
+  width: 300px;
+  height: 300px;
+  background: conic-gradient(
+    from 0deg,
+    color-mix(in srgb, var(--accent) 22%, transparent) 0 8deg,
+    transparent 8deg 30deg
+  );
+  opacity: 0.5;
+  animation: spin 14s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.unlock-medal {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 4px;
+  color: #fff;
+  animation: pop 0.45s cubic-bezier(0.22, 1.4, 0.4, 1) both 0.1s;
+}
+.unlock-medal.tier-start { background: linear-gradient(150deg, var(--brand), var(--brand-deep)); }
+.unlock-medal.tier-bronze { background: linear-gradient(150deg, #c88a3e, #9c6420); }
+.unlock-medal.tier-silver { background: linear-gradient(150deg, #b3c0c9, #7f909b); }
+.unlock-medal.tier-gold { background: linear-gradient(150deg, #e8bd58, #c0891a); }
+.unlock-name {
+  font-size: 27px;
+  font-weight: 600;
+}
+.unlock-note {
+  font-size: 14.5px;
+}
+.unlock-tier {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}

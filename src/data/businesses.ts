@@ -12,6 +12,21 @@ export type Business = {
   featured?: boolean;
   // brand color used sparingly for the storefront initial tile
   hue: string;
+  address: string;
+  hours: string;
+  // position on the stylized Explore map, in a 0..100 coordinate space
+  // (the walker "You" is anchored at 50,50)
+  map: { x: number; y: number };
+};
+
+// Per-category accent used for map pins and category labels.
+export const categoryColor: Record<Category, string> = {
+  Cafe: "#2f7d52",
+  Bakery: "#b7791f",
+  Grocer: "#4e8b3a",
+  Refill: "#3f8f6a",
+  Books: "#7a5cc0",
+  Wellness: "#2f7d8f",
 };
 
 export const businesses: Business[] = [
@@ -26,6 +41,9 @@ export const businesses: Business[] = [
     discount: "Worth ~$4.50",
     featured: true,
     hue: "#2f7d52",
+    address: "12 Greenway Row",
+    hours: "Open until 5:00 PM",
+    map: { x: 41, y: 40 },
   },
   {
     id: "milldon-bakery",
@@ -37,6 +55,9 @@ export const businesses: Business[] = [
     cost: 90,
     discount: "Save up to $2.20",
     hue: "#b7791f",
+    address: "3 Milldon Street",
+    hours: "Open until 2:00 PM",
+    map: { x: 62, y: 34 },
   },
   {
     id: "greenhaus",
@@ -49,6 +70,9 @@ export const businesses: Business[] = [
     discount: "Save $5.00",
     featured: true,
     hue: "#3f8f6a",
+    address: "48 Canal Walk",
+    hours: "Open until 6:00 PM",
+    map: { x: 33, y: 61 },
   },
   {
     id: "marlow-books",
@@ -60,6 +84,9 @@ export const businesses: Business[] = [
     cost: 150,
     discount: "Up to $4.00",
     hue: "#7a5cc0",
+    address: "27 Marlow Lane",
+    hours: "Open until 7:00 PM",
+    map: { x: 68, y: 63 },
   },
   {
     id: "cedar-grocer",
@@ -71,6 +98,9 @@ export const businesses: Business[] = [
     cost: 110,
     discount: "Save $3.00",
     hue: "#4e8b3a",
+    address: "5 Cedar Lane",
+    hours: "Open until 8:00 PM",
+    map: { x: 55, y: 58 },
   },
   {
     id: "still-water",
@@ -82,6 +112,9 @@ export const businesses: Business[] = [
     cost: 320,
     discount: "Save ~$11",
     hue: "#2f7d8f",
+    address: "90 Printers Yard",
+    hours: "Classes to 9:00 PM",
+    map: { x: 24, y: 33 },
   },
   {
     id: "juniper-cafe",
@@ -93,6 +126,9 @@ export const businesses: Business[] = [
     cost: 140,
     discount: "Worth ~$5",
     hue: "#2f7d52",
+    address: "14 Juniper Corner",
+    hours: "Open until 4:00 PM",
+    map: { x: 78, y: 46 },
   },
   {
     id: "hearth-bakery",
@@ -104,6 +140,9 @@ export const businesses: Business[] = [
     cost: 100,
     discount: "Worth ~$3.75",
     hue: "#b7791f",
+    address: "2 Rye Court",
+    hours: "Weekends from 8:00 AM",
+    map: { x: 19, y: 74 },
   },
 ];
 

@@ -4,12 +4,8 @@ import { ProgressRing } from "../components/ProgressRing";
 import { WeekChart } from "../components/WeekChart";
 import { Icon } from "../components/Icon";
 import { businesses } from "../data/businesses";
-import {
-  DAILY_GOAL,
-  stepsToKm,
-  stepsToLeaves,
-  useApp,
-} from "../store/AppState";
+import { stepsToKm, stepsToLeaves, useApp } from "../store/AppState";
+import { useAuth } from "../store/auth";
 
 function greeting() {
   const h = new Date().getHours();
@@ -19,9 +15,11 @@ function greeting() {
 }
 
 export function Home() {
-  const { name, stepsToday, week, co2SavedKg, totalKm, walking, session } = useApp();
-  const progress = stepsToday / DAILY_GOAL;
-  const remaining = Math.max(0, DAILY_GOAL - stepsToday);
+  const { user } = useAuth();
+  const { stepsToday, week, weekCo2Kg, weekKm, dailyGoal, streak, walking, session } = useApp();
+  const firstName = (user?.name ?? "there").split(" ")[0];
+  const progress = stepsToday / dailyGoal;
+  const remaining = Math.max(0, dailyGoal - stepsToday);
   const featured = businesses.filter((b) => b.featured);
 
   return (
@@ -30,7 +28,7 @@ export function Home() {
       <div className="screen view-enter">
         <section className="hero-greet">
           <p className="eyebrow">{greeting()}</p>
-          <h1 className="display greet-name">{name}.</h1>
+          <h1 className="display greet-name">{firstName}.</h1>
         </section>
 
         <section className="ring-card card">
@@ -45,7 +43,7 @@ export function Home() {
               {stepsToday.toLocaleString()}
             </span>
             <span className="ring-sub">
-              of {DAILY_GOAL.toLocaleString()} steps
+              of {dailyGoal.toLocaleString()} steps
             </span>
           </ProgressRing>
           <p className="ring-note">
@@ -84,10 +82,10 @@ export function Home() {
             </div>
             <span className="leaves-chip" style={{ background: "var(--brand-tint)", color: "var(--brand)", borderColor: "transparent" }}>
               <Icon name="flame" size={15} strokeWidth={2} />
-              12-day streak
+              {streak}-day streak
             </span>
           </div>
-          <WeekChart week={week} />
+          <WeekChart week={week} goal={dailyGoal} />
         </section>
 
         <section className="card impact-card">
@@ -97,18 +95,18 @@ export function Home() {
           </div>
           <div className="impact-grid">
             <div className="stack">
-              <span className="impact-num display tnum">{co2SavedKg.toFixed(1)}</span>
+              <span className="impact-num display tnum">{weekCo2Kg.toFixed(1)}</span>
               <span className="impact-unit">kg CO₂ not driven this week</span>
             </div>
             <div className="impact-div" />
             <div className="stack">
-              <span className="impact-num display tnum">{totalKm.toFixed(0)}</span>
+              <span className="impact-num display tnum">{weekKm.toFixed(0)}</span>
               <span className="impact-unit">km walked this week</span>
             </div>
           </div>
           <p className="impact-foot muted">
-            That's roughly {Math.round(co2SavedKg * 41)} phone charges' worth of carbon,
-            kept out of the air.
+            That's roughly {Math.max(1, Math.round(weekCo2Kg * 41))} phone charges' worth of
+            carbon, kept out of the air.
           </p>
         </section>
 
@@ -117,15 +115,15 @@ export function Home() {
             <span className="eyebrow">Near you</span>
             <span className="section-title">Spend Leaves locally</span>
           </div>
-          <Link to="/rewards" className="link-more">
-            All rewards
+          <Link to="/explore" className="link-more">
+            Explore
             <Icon name="chevron" size={16} strokeWidth={2.4} />
           </Link>
         </section>
 
         <div className="feat-row">
           {featured.map((b) => (
-            <Link to="/rewards" key={b.id} className="feat card">
+            <Link to="/explore" key={b.id} className="feat card">
               <div className="feat-badge" style={{ background: b.hue }}>
                 {b.name.replace(/&/g, "").split(" ").slice(0, 2).map((w) => w[0]).join("")}
               </div>
