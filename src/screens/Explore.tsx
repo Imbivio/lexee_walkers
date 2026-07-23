@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { AppHeader } from "../components/AppHeader";
 import { BusinessCard } from "../components/BusinessCard";
 import { Icon } from "../components/Icon";
-import { MapView } from "../components/MapView";
+import { ExploreMap, usingLiveMap } from "../components/ExploreMap";
 import {
   businesses,
   categories,
@@ -70,7 +70,13 @@ export function Explore() {
 
         {view === "map" ? (
           <>
-            <MapView selectedId={selectedId} onSelect={(b) => setSelectedId(b.id)} />
+            <ExploreMap selectedId={selectedId} onSelect={(b) => setSelectedId(b.id)} />
+            {!usingLiveMap && (
+              <p className="map-hint muted">
+                Showing the built-in map. Add a Google Maps key in your{" "}
+                <code>.env</code> file to see the live map.
+              </p>
+            )}
             {selected && (
               <article className="map-pick card" key={selected.id}>
                 <div className="biz-top">
