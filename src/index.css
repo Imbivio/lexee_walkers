@@ -208,8 +208,10 @@ a {
   position: relative;
   width: 100%;
   max-width: var(--shell-max);
-  min-height: 100vh;
-  min-height: 100dvh;
+  /* a definite height (not min-height) so the content area scrolls inside
+     the shell and the bottom nav stays pinned to the shell's bottom edge */
+  height: 100vh;
+  height: 100dvh;
   background: var(--paper);
   display: flex;
   flex-direction: column;
@@ -222,7 +224,7 @@ a {
     align-items: flex-start;
   }
   .shell {
-    min-height: min(880px, calc(100vh - 56px));
+    height: min(880px, calc(100vh - 56px));
     border-radius: 40px;
     box-shadow: var(--shadow-2);
     border: 1px solid var(--line);
@@ -231,6 +233,7 @@ a {
 
 .screen {
   flex: 1;
+  min-height: 0; /* allow the flex item to shrink so its own overflow scrolls */
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0 20px calc(112px + env(safe-area-inset-bottom));
