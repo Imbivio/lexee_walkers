@@ -24,9 +24,9 @@ Everything you do persists on your device between sessions.
   carbon impact for the week.
 - **Track** — a live walk session. Steps, distance, time, CO₂ saved, and
   Leaves all climb in real time; end it and the Leaves bank into your balance.
-- **Explore** — an interactive neighbourhood **map** with your location and
-  business pins by category, plus a **list** view with filters. Redeem an
-  offer and get a voucher code back.
+- **Explore** — a real street **map** (Leaflet + OpenStreetMap, no API key or
+  billing) with your location and business pins by category, plus a **list**
+  view with filters. Redeem an offer and get a voucher code back.
 - **Wallet** — Leaves balance, lifetime earnings, and redeemed vouchers.
 - **Real badges** — 12 milestones that unlock from your actual activity
   (distance, streak, shops supported, Leaves, CO₂, early walks). Each shows a
@@ -46,8 +46,8 @@ the full earn → redeem → badge loop is interactive without device sensors.
   numbers) paired with *Hanken Grotesk* for the interface.
 - **Themes:** full light and dark support, driven entirely by design tokens.
 - No emoji — all iconography is a single family of hand-drawn SVG line icons.
-- The Explore map is bespoke vector art so it sits inside the brand rather than
-  clashing with generic map tiles.
+- The Explore map uses OpenStreetMap tiles, gently tuned to the brand, and
+  falls back to a bespoke stylized vector map when offline.
 
 ## Running it
 
@@ -95,8 +95,8 @@ src/
   data/
     businesses.ts       local-business catalog (with map coordinates)
     badges.ts           badge definitions + progress logic
-  components/           Icon, BottomNav, ProgressRing, WeekChart, MapView,
-                        BadgeUnlock, cards, header
+  components/           Icon, BottomNav, ProgressRing, WeekChart, ExploreMap,
+                        MapLeaflet, MapView, BadgeUnlock, cards, header
   screens/              Auth, Home, Track, Explore, Wallet, Profile
 ```
 

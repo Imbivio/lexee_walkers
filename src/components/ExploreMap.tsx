@@ -1,18 +1,13 @@
 import type { Business } from "../data/businesses";
-import { MapView } from "./MapView";
-import { MapGoogle } from "./MapGoogle";
-
-const KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY?.trim();
+import { MapLeaflet } from "./MapLeaflet";
 
 type Props = {
   selectedId: string | null;
   onSelect: (b: Business) => void;
 };
 
-/** Live Google map when a key is configured, otherwise the stylized map. */
+/** The Explore map: a real OpenStreetMap street map (no key needed), with an
+    offline-safe stylized fallback handled inside MapLeaflet. */
 export function ExploreMap(props: Props) {
-  if (KEY) return <MapGoogle apiKey={KEY} {...props} />;
-  return <MapView {...props} />;
+  return <MapLeaflet {...props} />;
 }
-
-export const usingLiveMap = Boolean(KEY);
