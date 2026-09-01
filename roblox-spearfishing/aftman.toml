@@ -1,0 +1,3 @@
+# Toolchain for building/syncing the project into Roblox Studio
+[tools]
+rojo = "rojo-rbx/rojo@7.4.4"
